@@ -12,9 +12,28 @@
 from src.masks import get_mask_account
 from src.masks import get_mask_card_number
 
-user_card_number = input("Введите номер карты: ")
-user_account_number = input("Введите номер счета: ")
+# user_card_number = input("Введите номер карты: ")
+# user_account_number = input("Введите номер счета: ")
+
+#Задание 2
+# Проверка работы функции, которая умеет обрабатывать информацию о картах и счетах
+# Пример для карты
+# Visa Platinum 7000792289606361  # входной аргумент
+# Visa Platinum 7000 79** **** 6361  # выход функции
+
+# Пример для счета
+# Счет 73654108430135874305   входной аргумент
+# Счет **4305   выход функции
+
+from src.widget import mask_account_card
 
 if __name__ == "__main__":
-    print(get_mask_card_number(user_card_number))
-    print(get_mask_account(user_account_number))
+    print(mask_account_card('Visa Platinum 7000792289606361'))
+    print(mask_account_card('Maestro 1596837868705199'))
+    print(mask_account_card('Счет 64686473678894779589'))
+    print(mask_account_card('MasterCard 7158300734726758'))
+    print(mask_account_card('Счет 35383033474447895560'))
+    print(mask_account_card('Visa Classic 6831982476737658'))
+    print(mask_account_card('Visa Platinum 8990922113665229'))
+    print(mask_account_card('Visa Gold 5999414228426353'))
+    print(mask_account_card('Счет 73654108430135874305'))
