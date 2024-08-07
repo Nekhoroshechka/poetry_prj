@@ -44,5 +44,5 @@ def test_filter_by_currency_not_currency(transactions):
 
 
 def test_filter_by_currency_empty(transactions):
-    result = filter_by_currency([], "EUR")
-    assert next(result) == "Ввели пустой список!"
+    with pytest.raises(AssertionError):
+        assert filter_by_currency([], "EUR") == "Ввели пустой список!"

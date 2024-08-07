@@ -20,10 +20,3 @@ def filter_by_currency(transaction_list: list[dict], code_of_currency: str) -> I
 
 # for item in range(2):
 #     print(next(usd_transactions))
-# list_of_results = list()
-#     for transaction in transaction_list:
-#         if transaction["operationAmount"]["currency"]["code"] == code_of_currency:
-#             yield transaction
-#             list_of_results.append(transaction)
-#     if len(list_of_results) <= 0:
-#         raise StopIteration("Ввели пустой список!")
