@@ -2,8 +2,10 @@ import pytest
 
 
 from src.generators import filter_by_currency
+from src.generators import transaction_descriptions
 
 
+# Тестирование функции filter_by_currency
 def test_filter_by_currency(transactions):
     result = filter_by_currency(transactions, "USD")
     assert next(result) == {
@@ -45,3 +47,18 @@ def test_filter_by_currency_not_currency(transactions):
 def test_filter_by_currency_empty(transactions):
     with pytest.raises(TypeError):
         filter_by_currency([], "EUR")
+
+
+# Тестирование функции transaction_descriptions
+def test_transaction_descriptions(transactions):
+    descriptions = transaction_descriptions(transactions)
+    assert next(descriptions) == "Перевод организации"
+    assert next(descriptions) == "Перевод со счета на счет"
+    assert next(descriptions) == "Перевод со счета на счет"
+    assert next(descriptions) == "Перевод с карты на карту"
+    assert next(descriptions) == "Перевод организации"
+
+
+def test_transaction_descriptions_empty(transactions):
+    descriptions = transaction_descriptions([])
+    assert list(descriptions) == []

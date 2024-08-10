@@ -55,6 +55,7 @@ import pytest
 
 
 from src.generators import filter_by_currency
+from src.generators import transaction_descriptions
 
 
 transactions = (
@@ -140,5 +141,8 @@ transactions = (
 if __name__ == "__main__":
     usd_transactions = filter_by_currency(transactions, "EUR")
 
-for item in range(2):
-    print(next(usd_transactions))
+# for item in range(2):
+#     print(next(usd_transactions))
+    descriptions = transaction_descriptions(transactions)
+    for i in range(5):
+        print(next(descriptions))
