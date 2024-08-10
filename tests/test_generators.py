@@ -38,11 +38,10 @@ def test_filter_by_currency(transactions):
 
 
 def test_filter_by_currency_not_currency(transactions):
-    result = list(filter_by_currency(transactions, "EUR"))
-    expected_result = []
-    assert result == expected_result
+    generator = filter_by_currency(transactions, "EUR")
+    assert list(generator) == []
 
 
 def test_filter_by_currency_empty(transactions):
-    with pytest.raises(AssertionError):
-        assert filter_by_currency([], "EUR") == "Ввели пустой список!"
+    with pytest.raises(TypeError):
+        filter_by_currency([], "EUR")
