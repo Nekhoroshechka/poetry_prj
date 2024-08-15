@@ -3,13 +3,14 @@ import os
 
 
 def log(filename=None):
+    """Декоратор регистрирует детали выполнения функций"""
     def wrapper(func):
-        # @wraps
+
         def inner(*args, **kwargs):
             try:
                 result = func(*args, **kwargs)
                 if filename is None:
-                    print(f"Function {func.__name__} called with args: {args} and kwargs: {kwargs}. Result: {result}")
+                    print(f"{func.__name__} ok")
                 else:
                     if len(filename) > 0:
                         path_to_file = os.path.join(os.path.dirname(__file__), "../logs", filename)
@@ -23,19 +24,19 @@ def log(filename=None):
                     path_to_file = os.path.join(os.path.dirname(__file__), "../logs", filename)
                     with open(path_to_file, "w", encoding="utf-8") as file:
                         file.write(f"{func.__name__} error: {e}. Inputs: ({args}), {kwargs}")
-                raise Exception("Произошла ошибка!")
 
         return inner
 
     return wrapper
 
 
-@log("mylog.txt")
+@log(None)
 def my_function(x, y):
-    return x + y
+    # raise ValueError("Something went wrong")
+    return x+y
 
 
-my_function(1, 2)
+my_function(1, "2")
 
 
 # # Ожидаемый вывод в лог-файл:
