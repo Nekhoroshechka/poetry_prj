@@ -1,9 +1,9 @@
-from functools import wraps
 import os
 
 
 def log(filename=None):
     """Декоратор регистрирует детали выполнения функций"""
+
     def wrapper(func):
 
         def inner(*args, **kwargs):
@@ -33,7 +33,7 @@ def log(filename=None):
 @log(None)
 def my_function(x, y):
     # raise ValueError("Something went wrong")
-    return x+y
+    return x + y
 
 
 my_function(1, "2")
